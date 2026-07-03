@@ -1,0 +1,65 @@
+{
+  "claim_digest": "sha256:2fff9684aeefbabac3c08fb13b954489b49f457004c77aa3048444a290a49a91",
+  "claim_payload": {
+    "claim_tests": [
+      "tests.test_iteration9_lean_github_replay.TestCandidateProvenance::test_verify_candidate_fails_on_empty_tactic",
+      "tests.test_iteration9_lean_github_replay.TestCandidateProvenance::test_verify_candidate_fails_when_tactic_absent",
+      "tests.test_iteration9_lean_github_replay.TestCandidateProvenance::test_verify_candidate_passes_when_tactic_present",
+      "tests.test_iteration9_lean_github_replay.TestCaseProvenance::test_axiomatic_case_provenance",
+      "tests.test_iteration9_lean_github_replay.TestCaseProvenance::test_forbidden_tokens_constant",
+      "tests.test_iteration9_lean_github_replay.TestForbiddenTokenScanner::test_admit_rejected",
+      "tests.test_iteration9_lean_github_replay.TestForbiddenTokenScanner::test_axiom_rejected",
+      "tests.test_iteration9_lean_github_replay.TestForbiddenTokenScanner::test_clean_proof_passes",
+      "tests.test_iteration9_lean_github_replay.TestForbiddenTokenScanner::test_scoped_to_proof_not_repo_names",
+      "tests.test_iteration9_lean_github_replay.TestForbiddenTokenScanner::test_sorry_rejected",
+      "tests.test_iteration9_lean_github_replay.TestForbiddenTokenScanner::test_unsafe_rejected",
+      "tests.test_iteration9_lean_github_replay.TestProofBlockMatching::test_exactly_one_match_succeeds",
+      "tests.test_iteration9_lean_github_replay.TestProofBlockMatching::test_two_matches_raises",
+      "tests.test_iteration9_lean_github_replay.TestProofBlockMatching::test_zero_matches_raises",
+      "tests.test_iteration9_lean_github_replay.TestReceiptStability::test_receipt_carries_non_claims",
+      "tests.test_iteration9_lean_github_replay.TestReceiptStability::test_receipt_has_no_timestamp",
+      "tests.test_iteration9_lean_github_replay.TestReceiptStability::test_receipt_record_hash_stable",
+      "tests.test_iteration9_lean_github_replay.TestReceiptStability::test_receipt_schema_version",
+      "tests.test_iteration9_lean_github_replay.TestSourceRepoReplay::test_bad_rfl_only_rejected",
+      "tests.test_iteration9_lean_github_replay.TestSourceRepoReplay::test_baseline_build_passes",
+      "tests.test_iteration9_lean_github_replay.TestSourceRepoReplay::test_good_candidate_accepted",
+      "tests.test_iteration9_lean_github_replay.TestSourceRepoReplay::test_lean_version_captured",
+      "tests.test_iteration9_lean_github_replay.TestSourceRepoReplay::test_receipt_from_real_replay",
+      "tests.test_iteration9_lean_github_replay.TestSourceRepoReplay::test_replay_passes_all_checks",
+      "tests.test_iteration9_lean_github_replay.TestSourceRepoReplay::test_source_checkout_unmutated"
+    ],
+    "domain_receipt_schema": "lean_github_replay_receipt_v1",
+    "kind": "gate_manifest_v1",
+    "section": "04_real_corpus_replay",
+    "test_files": [
+      "tests/test_iteration9_lean_github_replay.py"
+    ]
+  },
+  "provenance": {
+    "dependencies": {
+      "lake_available": true,
+      "lean_available": true,
+      "pyarrow_available": true,
+      "quantum_data_present": true
+    },
+    "failed_tests": [],
+    "gate_exit_code": 0,
+    "mode": "full",
+    "outcomes": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 25,
+      "skipped": 0,
+      "total": 25
+    },
+    "platform": "darwin-arm64",
+    "python_version": "3.9.6",
+    "runtime_seconds": 130.778,
+    "skipped_tests": [],
+    "source_commit": "b72cc65743c892964473ccae2889b0f043e35034",
+    "working_tree_dirty": false
+  },
+  "schema": "manifold-reproduce-receipt-v1",
+  "section": "04_real_corpus_replay",
+  "status": "FROZEN"
+}

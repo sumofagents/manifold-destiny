@@ -1,0 +1,47 @@
+[project]
+name = "manifold-destiny"
+version = "0.0.0"
+description = "Code, formal gates, and reproduction receipts for the Manifold Destiny preprint."
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+  { name = "Jeremiah Thompson", email = "jeremiah@jeremiahai.com" },
+  { name = "Justin Horowitz", email = "justin.horowitz@gmail.com" },
+]
+license = { file = "LICENSE" }
+
+# Core runtime dependency. The lite reproduction gates and all shipped src/
+# modules need only the standard library. numpy is used solely by the optional
+# paper-figure regeneration script (scripts/generate_paper_figures.py) and is
+# therefore in the `figures` extra below, not a core dependency.
+dependencies = []
+
+# Optional extras. Each is install-on-demand; the default install (and the
+# eight gate test files across six reproduction gates) need none of them — the modules that use them
+# guard the import and skip cleanly when the dep is absent.
+[project.optional-dependencies]
+# Paper figure regeneration — scripts/generate_paper_figures.py (numpy + matplotlib).
+figures = [
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+]
+# Real Lean/GitHub corpus replay — reads the 43MB parquet via pyarrow.
+# Used by src/manifold_destiny/iteration9_lean_github_replay.py (guarded by
+# pyarrow_available()) and the slow tests in
+# tests/test_iteration9_lean_github_replay.py.
+lean-github = [
+    "pyarrow>=14.0",
+]
+# Development tooling — test runner plus lockfile generators (either works).
+dev = [
+    "pytest>=7.4",
+    "pip-tools>=7.4",
+    "uv>=0.2",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+markers = [
+    "slow: marks tests as slow (deselected with '-m \"not slow\"'); real Lake builds, quantum data deps, etc.",
+]

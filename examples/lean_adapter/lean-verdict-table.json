@@ -1,0 +1,34 @@
+{
+  "c_candidates": 2,
+  "cold_floor": 0.5,
+  "entries": {
+    "default/branch_0/h_0": {
+      "duration_s": 0.291,
+      "exit_code": 0,
+      "timed_out": false,
+      "verdict": "accepted"
+    },
+    "default/branch_0/h_1": {
+      "duration_s": 0.265,
+      "exit_code": 1,
+      "timed_out": false,
+      "verdict": "rejected"
+    },
+    "default/branch_1/h_0": {
+      "duration_s": 0.323,
+      "exit_code": 1,
+      "timed_out": false,
+      "verdict": "rejected"
+    },
+    "default/branch_1/h_1": {
+      "duration_s": 0.282,
+      "exit_code": 0,
+      "timed_out": false,
+      "verdict": "accepted"
+    }
+  },
+  "family": "A",
+  "k_bits": 1,
+  "lean_version": "Lean (version 4.31.0, arm64-apple-darwin24.6.0, commit 68218e876d2a38b1985b8590fff244a83c321783, Release)",
+  "schema_version": "manifold-destiny-lean-adapter-v1"
+}
