@@ -1,0 +1,541 @@
+{
+  "episodes": [
+    {
+      "custody": {
+        "purpose": "Prove attribute anti-witness and repair construction without real CLEVR rows.",
+        "source_dataset": "synthetic CLEVR contract fixture"
+      },
+      "episode_id": "smoke-attribute-repair-000",
+      "model_visible_initial": {
+        "consumer": {
+          "consumer_id": "c0",
+          "program": [
+            {
+              "function": "scene",
+              "inputs": [],
+              "value_inputs": []
+            },
+            {
+              "function": "filter_shape",
+              "inputs": [
+                0
+              ],
+              "value_inputs": [
+                "cube"
+              ]
+            },
+            {
+              "function": "query_material",
+              "inputs": [
+                1
+              ],
+              "value_inputs": []
+            }
+          ],
+          "projection": {
+            "domain_filter": {
+              "shape": "cube"
+            },
+            "field": "material"
+          }
+        },
+        "evidence_so_far": [],
+        "q_candidate": {
+          "cells": [
+            {
+              "cell_id": "cell_cube",
+              "state_ids": [
+                "o0",
+                "o1"
+              ]
+            },
+            {
+              "cell_id": "cell_sphere",
+              "state_ids": [
+                "o2"
+              ]
+            }
+          ],
+          "coarsening_basis": [
+            {
+              "field": "shape"
+            }
+          ],
+          "q_id": "q0"
+        },
+        "world": {
+          "states": [
+            {
+              "fields": {
+                "color": "red",
+                "material": "metal",
+                "shape": "cube",
+                "size": "small"
+              },
+              "relations": {
+                "behind": [
+                  "o2"
+                ],
+                "front": [],
+                "left": [
+                  "o1"
+                ],
+                "right": []
+              },
+              "state_id": "o0"
+            },
+            {
+              "fields": {
+                "color": "blue",
+                "material": "rubber",
+                "shape": "cube",
+                "size": "large"
+              },
+              "relations": {
+                "behind": [],
+                "front": [
+                  "o2"
+                ],
+                "left": [],
+                "right": [
+                  "o0"
+                ]
+              },
+              "state_id": "o1"
+            },
+            {
+              "fields": {
+                "color": "green",
+                "material": "metal",
+                "shape": "sphere",
+                "size": "small"
+              },
+              "relations": {
+                "behind": [
+                  "o1"
+                ],
+                "front": [
+                  "o0"
+                ],
+                "left": [],
+                "right": []
+              },
+              "state_id": "o2"
+            }
+          ],
+          "world_type": "scene_graph"
+        }
+      },
+      "repair_episode": {
+        "proposal": {
+          "field": "material",
+          "operator": "add_missing_attribute"
+        },
+        "verifier_result": "accepted"
+      },
+      "target_only": {
+        "anti_witness": {
+          "cell_id": "cell_cube",
+          "distinguishing_field": "material",
+          "left_consumer_value": "metal",
+          "left_state_id": "o0",
+          "right_consumer_value": "rubber",
+          "right_state_id": "o1"
+        },
+        "expected_repair": {
+          "field": "material",
+          "operator": "add_missing_attribute"
+        },
+        "verifier_result_before_repair": "invalid"
+      },
+      "verifier_observation_after_reveal": {
+        "cell_id": "cell_cube",
+        "distinguishing_field": "material",
+        "left_state_id": "o0",
+        "observation_type": "anti_witness",
+        "right_state_id": "o1"
+      }
+    },
+    {
+      "custody": {
+        "purpose": "Prove relation anti-witness and relation-signature repair construction.",
+        "source_dataset": "synthetic CLEVR contract fixture"
+      },
+      "episode_id": "smoke-relation-repair-001",
+      "model_visible_initial": {
+        "consumer": {
+          "consumer_id": "c1",
+          "program": [
+            {
+              "function": "scene",
+              "inputs": [],
+              "value_inputs": []
+            },
+            {
+              "function": "filter_color",
+              "inputs": [
+                0
+              ],
+              "value_inputs": [
+                "red"
+              ]
+            },
+            {
+              "function": "filter_shape",
+              "inputs": [
+                1
+              ],
+              "value_inputs": [
+                "sphere"
+              ]
+            },
+            {
+              "function": "unique",
+              "inputs": [
+                2
+              ],
+              "value_inputs": []
+            },
+            {
+              "function": "relate",
+              "inputs": [
+                3
+              ],
+              "value_inputs": [
+                "left"
+              ]
+            },
+            {
+              "function": "filter_shape",
+              "inputs": [
+                4
+              ],
+              "value_inputs": [
+                "cube"
+              ]
+            }
+          ],
+          "projection": {
+            "domain_filter": {
+              "shape": "cube"
+            },
+            "relation_membership": {
+              "anchor": {
+                "color": "red",
+                "shape": "sphere"
+              },
+              "relation": "left"
+            }
+          }
+        },
+        "evidence_so_far": [],
+        "q_candidate": {
+          "cells": [
+            {
+              "cell_id": "cell_sphere",
+              "state_ids": [
+                "o0"
+              ]
+            },
+            {
+              "cell_id": "cell_cube",
+              "state_ids": [
+                "o1",
+                "o2"
+              ]
+            }
+          ],
+          "coarsening_basis": [
+            {
+              "field": "shape"
+            },
+            {
+              "field": "size"
+            },
+            {
+              "field": "material"
+            }
+          ],
+          "q_id": "q1"
+        },
+        "world": {
+          "states": [
+            {
+              "fields": {
+                "color": "red",
+                "material": "metal",
+                "shape": "sphere",
+                "size": "large"
+              },
+              "relations": {
+                "behind": [
+                  "o2"
+                ],
+                "front": [],
+                "left": [],
+                "right": [
+                  "o1"
+                ]
+              },
+              "state_id": "o0"
+            },
+            {
+              "fields": {
+                "color": "blue",
+                "material": "rubber",
+                "shape": "cube",
+                "size": "small"
+              },
+              "relations": {
+                "behind": [],
+                "front": [
+                  "o2"
+                ],
+                "left": [
+                  "o0"
+                ],
+                "right": []
+              },
+              "state_id": "o1"
+            },
+            {
+              "fields": {
+                "color": "blue",
+                "material": "rubber",
+                "shape": "cube",
+                "size": "small"
+              },
+              "relations": {
+                "behind": [
+                  "o1"
+                ],
+                "front": [
+                  "o0"
+                ],
+                "left": [],
+                "right": []
+              },
+              "state_id": "o2"
+            }
+          ],
+          "world_type": "scene_graph"
+        }
+      },
+      "repair_episode": {
+        "proposal": {
+          "anchor": {
+            "color": "red",
+            "shape": "sphere"
+          },
+          "operator": "add_missing_relation_signature",
+          "relation": "left"
+        },
+        "verifier_result": "accepted"
+      },
+      "target_only": {
+        "anti_witness": {
+          "cell_id": "cell_cube",
+          "distinguishing_relation": "left:red:sphere",
+          "left_consumer_value": "member",
+          "left_state_id": "o1",
+          "right_consumer_value": "non_member",
+          "right_state_id": "o2"
+        },
+        "expected_repair": {
+          "anchor": {
+            "color": "red",
+            "shape": "sphere"
+          },
+          "operator": "add_missing_relation_signature",
+          "relation": "left"
+        },
+        "verifier_result_before_repair": "invalid"
+      },
+      "verifier_observation_after_reveal": {
+        "cell_id": "cell_cube",
+        "distinguishing_relation": "left:red:sphere",
+        "left_state_id": "o1",
+        "observation_type": "anti_witness",
+        "right_state_id": "o2"
+      }
+    },
+    {
+      "custody": {
+        "purpose": "Prove an already factorized q/c construction with no initial anti-witness.",
+        "source_dataset": "synthetic CLEVR contract fixture"
+      },
+      "episode_id": "smoke-already-valid-002",
+      "model_visible_initial": {
+        "consumer": {
+          "consumer_id": "c2",
+          "program": [
+            {
+              "function": "scene",
+              "inputs": [],
+              "value_inputs": []
+            },
+            {
+              "function": "query_shape",
+              "inputs": [
+                0
+              ],
+              "value_inputs": []
+            }
+          ],
+          "projection": {
+            "field": "shape"
+          }
+        },
+        "evidence_so_far": [],
+        "q_candidate": {
+          "cells": [
+            {
+              "cell_id": "cell_cylinder",
+              "state_ids": [
+                "o0"
+              ]
+            },
+            {
+              "cell_id": "cell_sphere",
+              "state_ids": [
+                "o1"
+              ]
+            }
+          ],
+          "coarsening_basis": [
+            {
+              "field": "shape"
+            }
+          ],
+          "q_id": "q2"
+        },
+        "world": {
+          "states": [
+            {
+              "fields": {
+                "color": "yellow",
+                "material": "metal",
+                "shape": "cylinder",
+                "size": "small"
+              },
+              "relations": {
+                "behind": [],
+                "front": [],
+                "left": [
+                  "o1"
+                ],
+                "right": []
+              },
+              "state_id": "o0"
+            },
+            {
+              "fields": {
+                "color": "purple",
+                "material": "rubber",
+                "shape": "sphere",
+                "size": "large"
+              },
+              "relations": {
+                "behind": [],
+                "front": [],
+                "left": [],
+                "right": [
+                  "o0"
+                ]
+              },
+              "state_id": "o1"
+            }
+          ],
+          "world_type": "scene_graph"
+        }
+      },
+      "repair_episode": {
+        "proposal": null,
+        "verifier_result": "not_needed"
+      },
+      "target_only": {
+        "anti_witness": null,
+        "expected_repair": null,
+        "verifier_result_before_repair": "valid"
+      },
+      "verifier_observation_after_reveal": {
+        "observation_type": "valid_q"
+      }
+    }
+  ],
+  "required_files": [
+    {
+      "consumed_fields": [
+        "scenes.objects",
+        "scenes.relationships"
+      ],
+      "purpose": "Training scene graphs for worlds W.",
+      "relative_path": "scenes/CLEVR_train_scenes.json",
+      "withheld_fields": [
+        "image_filename",
+        "image_index",
+        "split"
+      ]
+    },
+    {
+      "consumed_fields": [
+        "scenes.objects",
+        "scenes.relationships"
+      ],
+      "purpose": "Validation scene graphs for worlds W.",
+      "relative_path": "scenes/CLEVR_val_scenes.json",
+      "withheld_fields": [
+        "image_filename",
+        "image_index",
+        "split"
+      ]
+    },
+    {
+      "consumed_fields": [
+        "questions.program"
+      ],
+      "purpose": "Training functional programs for declared consumers c.",
+      "relative_path": "questions/CLEVR_train_questions.json",
+      "withheld_fields": [
+        "question",
+        "answer",
+        "image_filename",
+        "image_index",
+        "question_index",
+        "split"
+      ]
+    },
+    {
+      "consumed_fields": [
+        "questions.program"
+      ],
+      "purpose": "Validation functional programs for declared consumers c.",
+      "relative_path": "questions/CLEVR_val_questions.json",
+      "withheld_fields": [
+        "question",
+        "answer",
+        "image_filename",
+        "image_index",
+        "question_index",
+        "split"
+      ]
+    }
+  ],
+  "schema_version": "manifold-destiny.clevr_smoke_slice.v1",
+  "slice_id": "clevr-intake-contract-smoke-v1",
+  "source_contract": {
+    "accepted_archive": "CLEVR_v1.0_no_images.zip",
+    "accepted_download_url": "https://dl.fbaipublicfiles.com/clevr/CLEVR_v1.0_no_images.zip",
+    "custody_notes": [
+      "Use the official no-images archive for the first gate.",
+      "Read train and validation scene graphs plus train and validation question programs.",
+      "Do not ingest pixels, natural-language question text, or answers as model-visible data."
+    ],
+    "dataset_name": "CLEVR v1.0",
+    "generation_code_url": "https://github.com/facebookresearch/clevr-dataset-gen",
+    "license_name": "Creative Commons CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "official_page_url": "https://cs.stanford.edu/people/jcjohns/clevr/",
+    "verified_date": "2026-06-09"
+  }
+}
